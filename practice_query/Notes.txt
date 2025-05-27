@@ -1,0 +1,45 @@
+1)
+You can use Aliases Noting name with Where,order by case But in Having 
+clause that is not used
+Aliases in HAVING:
+
+Aliases cannot be used directly in the HAVING clause because the HAVING clause is evaluated before the SELECT clause as well.
+Instead, you should repeat the expression or use a subquery/CTE to reference the alias.
+Example:
+-- This works because alias `total_salary` is used in ORDER BY
+
+SELECT department_id, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department_id
+ORDER BY total_salary;
+
+-- This will NOT work because alias `total_salary` is used in HAVING
+
+SELECT department_id, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department_id
+HAVING total_salary > 50000;
+
+-- Correct way: Repeat the expression in HAVING
+
+SELECT department_id, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department_id
+HAVING SUM(salary) > 50000;
+
+
+2)
+you should put comma before starting Case satement
+when using a CASE statement in the SELECT clause, it must be preceded by a comma if it is not the first column in the SELECT list.
+
+Example:
+Correct Usage:
+SELECT 
+    employee_id,
+    department_id,
+    -- Comma before the CASE statement
+    CASE 
+        WHEN salary > 50000 THEN 'High'
+        ELSE 'Low'
+    END AS salary_category
+FROM employees;

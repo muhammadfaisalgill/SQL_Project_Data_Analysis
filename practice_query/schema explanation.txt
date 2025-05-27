@@ -1,0 +1,25 @@
+The design of the tables reflects a relational database schema where relationships between entities are established using primary and foreign keys. Here's an analysis of why job_id is both a primary key in job_postings_fact and a primary and foreign key in skills_job_dim:
+
+1. job_postings_fact Table
+job_id as Primary Key:
+In the job_postings_fact table, job_id uniquely identifies each job posting.
+This ensures that no two rows in this table can have the same job_id.
+2. skills_job_dim Table
+job_id as a Foreign Key:
+In the skills_job_dim table, job_id is a foreign key referencing the job_postings_fact table.
+This establishes a relationship between job postings and the skills required for those jobs. It ensures that any job_id in skills_job_dim must exist in the job_postings_fact table.
+job_id as Part of the Composite Primary Key:
+In skills_job_dim, the primary key is a composite key consisting of job_id and skill_id.
+This design allows the table to represent a many-to-many relationship between jobs and skills.
+For example, a single job can require multiple skills, and a single skill can be associated with multiple jobs. The composite primary key ensures that each combination of job_id and skill_id is unique.
+Why This Design?
+Normalization:
+The schema is normalized to avoid redundancy. Instead of storing skills directly in the job_postings_fact table, they are stored in a separate skills_dim table and linked through skills_job_dim.
+Many-to-Many Relationship:
+The skills_job_dim table acts as a bridge table to handle the many-to-many relationship between jobs and skills.
+Data Integrity:
+The foreign key constraint ensures that only valid job_id values from job_postings_fact can exist in skills_job_dim.
+Summary
+job_id is a primary key in job_postings_fact because it uniquely identifies each job.
+job_id is a foreign key in skills_job_dim to establish a relationship with job_postings_fact.
+job_id is part of the composite primary key in skills_job_dim to ensure unique combinations of jobs and skills, enabling a many-to-many relationship.

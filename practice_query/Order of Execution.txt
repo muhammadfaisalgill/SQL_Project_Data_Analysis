@@ -1,0 +1,21 @@
+SQL for Data Analytics - Learn SQL in 4 Hours
+📂 Full Order of Execution
+- FROM / JOIN- Specifies the tables to retrieve data from and how to join them.
+
+- WHERE- Filters rows based on conditions.
+
+- GROUP BY- Group rows share a property so aggregate functions can be applied.
+
+- HAVING- Filters groups based on aggregate conditions (used after GROUP BY).
+
+- SELECT- Select specific columns to display in the final result.
+
+- DISTINCT- Removes duplicate rows from the result set (applied after SELECT).
+
+- ORDER BY- Sorts the result set based on specified columns/values.
+
+- LIMIT / OFFSET- Limits the number of rows returned, often used for pagination.
+
+
+
+
